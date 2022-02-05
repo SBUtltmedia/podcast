@@ -1,0 +1,2 @@
+Get-ChildItem -Path "."|
+Foreach-Object { ffmpeg  -y -i  "$_" -vn -c:a aac -movflags +faststart -b:a 24k "smaller/$_"}

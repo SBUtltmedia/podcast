@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+     
+        <link
+        rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+      <link rel="stylesheet" href="tiny-html-audio-player/dist/font-awesome.min.css">
+      <link rel="stylesheet" href="tiny-html-audio-player/dist/prism.css">
+      <link rel="stylesheet" href="tiny-html-audio-player/dist/main.css">
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+        <script>
+$.get("playlist.json", function(data) {
+    data.forEach(function (d) {
+        let song = {
+            artist: d.speaker,
+            album: d.conference,
+            name: d.lecturer,
+            cover_art_url: "https://dummyimage.com/300x200/000/fff&text=" + d.song_name,
+            url: d.s3Url
+        };
+ 
+     let speaker =$('<h1/>',{"html":d.speaker})
+     let lecture =$('<p/>',{"html":d.lecture})
+     let source=$('<source/>',{"src":d.url})
+     let audio=$('<audio/>',{"controls":true,"class":"iru-tiny-player"})
+     let item=$('<div/>')
+    $('.container').append(item).append([speaker,lecture,audio.append(source)]);
+    });
+
+});
+
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+ <div class="container"></div>
+        <script 
+          src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+          integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+          crossorigin="anonymous"></script>
+        <script src="tiny-html-audio-player/dist/prism.js"></script>
+        <script src="tiny-html-audio-player/dist/howler.min.js"></script>
+        <script src="tiny-html-audio-player/dist/tinyPlayer.min.js"></script>
+    </body>
+</html>
