@@ -34,7 +34,7 @@ $.get("playlist.json", function(data) {
             url: d.s3Url
         };
  
-     let speaker =$('<h1/>',{"html":d.speaker})
+     let speaker =$('<h3/>',{"html":d.speaker})
      let lecture =$('<p/>',{"html":d.lecture})
      let source=$('<source/>',{"src":d.url})
      let audio=$('<audio/>',{"controls":true,"class":"iru-tiny-player"})
